@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>3d翻转效果</title>
+    <style>
+        body{
+            perspective: 2000px;
+        }
+        .wrapper{
+            margin: 0 auto;
+            width: 200px;
+            height: 80px;
+            transform-style: preserve-3d;
+            position: relative;
+            transform: rotateX(0deg);
+            transition: transform 0.8s ease;
+        }
+        .wrapper div{
+            position: absolute;
+            width: 400px;
+            height: 80px;
+            /* opacity: 0.5; */
+            perspective: 2000px;
+            transform-style: preserve-3d;
+            text-align: center;
+            line-height: 80px;
+        }
+        .wrapper div:nth-child(1){
+            background-color: aqua;
+            transform: rotateX(0deg) translateZ(23.12138728323699px);
+        }
+        .wrapper div:nth-child(2){
+            background-color: red;
+            transform:  rotateX(240deg) translateZ(23.12138728323699px);
+        }
+        .wrapper div:nth-child(3){
+            background-color: yellow;
+            transform:  rotateX(120deg) translateZ(23.12138728323699px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div>广告一</div>
+        <div>广告二</div>
+        <div>广告三</div>
+    </div>
+    <!-- <button onclick='next()'>下一张</button> -->
+
+    <script type="text/javascript">
+        let wrapper = document.getElementsByClassName('wrapper')[0];
+        console.log(wrapper);
+        let deg = 0;
+        let next = function () {
+            deg += 120;
+            wrapper.style.transform = `rotateX(${deg}deg)`;
+            
+        }
+
+        setInterval(next, 2000);
+    </script>
+</body>
+
+</html>
